@@ -8,5 +8,3 @@ With our system, airlines can effortlessly track flight schedules, manage passen
 The system features advanced analytics, generating insightful reports for strategic decision-making. By integrating robust security measures, it prioritizes passenger safety and regulatory compliance.
 
 Our GitHub repository offers access to the complete database schema, SQL queries, and sample data for testing and development purposes. Join us in shaping the future of air travel by collaborating and contributing to this open-source project.
-
-Together, let's soar to new heights with the Airport Management System!
