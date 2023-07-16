@@ -1,12 +1,206 @@
-Airport Management System - Revolutionizing Air Travel Efficiency
 
-Description:
-Welcome to the Airport Management System, a cutting-edge software solution that streamlines and enhances the operations of airports worldwide. Developed with SQL and DBMS, this innovative system optimizes the management of airlines, airports, flights, passengers, and employees, revolutionizing air travel efficiency.
-
-With our system, airlines can effortlessly track flight schedules, manage passenger information, and ensure seamless connectivity between destinations. Airports benefit from comprehensive management of facilities, including terminal operations and resource allocation. Passengers experience a hassle-free journey with smooth check-ins, accurate flight information, and improved baggage handling.
-
-The system features advanced analytics, generating insightful reports for strategic decision-making. By integrating robust security measures, it prioritizes passenger safety and regulatory compliance.
-
-Our GitHub repository offers access to the complete database schema, SQL queries, and sample data for testing and development purposes. Join us in shaping the future of air travel by collaborating and contributing to this open-source project.
-
-Together, let's soar to new heights with the Airport Management System!
+INSERT INTO `employee2` VALUES ('ADMINISTRATIVE SUPPORT',50000),('AIRPORT
+AUTHORITY',90000),('ENGINEER',70000),('TRAFFIC MONITOR',80000);
+--
+-- Table structure for table `flight`
+--
+DROP TABLE IF EXISTS `flight`;
+CREATE TABLE `flight` (
+`FLIGHT_CODE` varchar(10) NOT NULL,
+`SOURCE` varchar(3) DEFAULT NULL,
+`DESTINATION` varchar(3) DEFAULT NULL,
+`ARRIVAL` varchar(10) DEFAULT NULL,
+`DEPARTURE` varchar(10) DEFAULT NULL,
+`STATUS` varchar(10) DEFAULT NULL,
+`DURATION` varchar(30) DEFAULT NULL,
+`FLIGHTTYPE` varchar(10) DEFAULT NULL,
+`LAYOVER_TIME` varchar(30) DEFAULT NULL,
+`NO_OF_STOPS` int DEFAULT NULL,
+`AIRLINEID` varchar(3) DEFAULT NULL,
+PRIMARY KEY (`FLIGHT_CODE`),
+KEY `AIRLINEID` (`AIRLINEID`),
+CONSTRAINT `flight_ibfk_1` FOREIGN KEY (`AIRLINEID`) REFERENCES `airline` (`AIRLINEID`) ON DELETE
+CASCADE
+) ENGINE=InnoDB;
+--
+-- Dumping data for table `flight`
+--
+INSERT INTO `flight` VALUES ('9W2334','IAH','DEL','23:00','13:45','On-
+time','23hrs','Direct','0',0,'9W'),('AA4367','SFO','FRA','18:10','18:55','On-time','21hrs','Non-
+stop','0',0,'AA'),('AI127','BOM','DFW','02:10','03:15','Delayed','24hr','Connecting','3',1,'AI'),('AI2014','BO
+M','DFW','02:10','03:15','On-time','24hr','Connecting','3',1,'AI'),('BA1689','FRA','DEL','10:20','10:55','On-
+time','14hrs','Non-stop','0',0,'BA'),('BA3056','BOM','DFW','02:15','02:55','On-
+time','29hrs','Connecting','3',1,'BA'),('EK3456','BOM','SFO','18:50','19:40','On-time','30hrs','Non-
+stop','0',0,'EK'),('EY1234','JFK','TPA','19:20','20:05','On-
+time','16hrs','Connecting','5',2,'EY'),('LH9876','JFK','BOM','05:50','06:35','On-time','18hrs','Non-
+stop','0',0,'LH'),('QR1902','IXC','IAH','22:00','22:50','Delayed','28hrs','Non-
+stop','5',1,'QR'),('QR2305','BOM','DFW','13:00','13:55','Delayed','21hr','Non-stop','0',0,'QR');
+--
+-- Table structure for table `passenger1`
+--
+DROP TABLE IF EXISTS `passenger1`;
+CREATE TABLE `passenger1` (
+`PID` int NOT NULL,
+`PASSPORTNO` varchar(10) NOT NULL,
+PRIMARY KEY (`PID`,`PASSPORTNO`)
+) ENGINE=InnoDB;
+--
+-- Dumping data for table `passenger1`
+--
+INSERT INTO `passenger1` VALUES
+(1,'A1234568'),(2,'B9876541'),(3,'C2345698'),(4,'D1002004'),(5,'X9324666'),(6,'B8765430'),(7,'J9801235'
+),(8,'A1122334'),(9,'Q1243567'),(10,'S1243269'),(11,'E3277889'),(12,'K3212322'),(13,'P3452390'),(14,'W
+7543336'),(15,'R8990566');
+--
+-- Table structure for table `passenger2`
+--
+DROP TABLE IF EXISTS `passenger2`;
+CREATE TABLE `passenger2` (
+`PASSPORTNO` varchar(10) NOT NULL,
+`FNAME` varchar(20) DEFAULT NULL,
+`M` varchar(1) DEFAULT NULL,
+`LNAME` varchar(20) DEFAULT NULL,
+`ADDRESS` varchar(100) DEFAULT NULL,
+`PHONE` bigint DEFAULT NULL,
+`AGE` int DEFAULT NULL,
+`*****` varchar(1) DEFAULT NULL,
+PRIMARY KEY (`PASSPORTNO`)
+) ENGINE=InnoDB;
+--
+-- Dumping data for table `passenger2`
+--
+INSERT INTO `passenger2` VALUES ('A1122334','MANAN','S','LAKHANI','5589 CHTHAM REFLECTIONS,
+APT 349 HOUSTON, TX',9004335126,25,'F'),('A1234568','ALEN','M','SMITH','2230 NORTHSIDE, APT 11,
+ALBANY, NY',8080367290,30,'M'),('B8765430','LAKSHMI','P','SHARMA','1110 FIR HILLS, APT 903, AKRON,
+OH',7666190505,30,'F'),('B9876541','ANKITA','V','AHIR','3456 VIKAS APTS, APT 102,DOMBIVLI,
+INDIA',8080367280,26,'F'),('C2345698','KHYATI','A','MISHRA','7820 MCCALLUM COURTS, APT 234,
+AKRON, OH',8082267280,30,'F'),('D1002004','ANKITA','S','PATIL','7720 MCCALLUM BLVD, APT 1082,
+DALLAS, TX',9080367266,23,'F'),('E3277889','John','A','GATES','1234 BAKER APTS, APT 59, HESSE,
+GERMANY',9724569986,10,'M'),('J9801235','AKHILESH','D','JOSHI','345 CHATHAM COURTS, APT 678,
+MUMBAI, INDIA',9080369290,29,'M'),('K3212322','SARA','B','GOMES','6785 SPLITSVILLA, APT 34, MIAMI,
+FL',9024569226,15,'F'),('P3452390','ALIA','V','BHAT','548 MARKET PLACE, SAN Francisco,
+CA',9734567800,10,'F'),('Q1243567','KARAN','M','MOTANI','4444 FRANKFORD VILLA, APT 77,
+GUILDERLAND, NY',9727626643,22,'M'),('R8990566','RIA','T','GUPTA','3355 PALENCIA, APT 2065,
+MUMBAI, INDIA',4724512343,10,'M'),('S1243269','ROM','A','SOLANKI','7720 MCCALLUM BLVD, APT
+2087, DALLAS, TX',9004568903,60,'M'),('W7543336','JOHN','P','SMITH','6666 ROCK HILL, APT 2902,
+TAMPA, FL',4624569986,55,'M'),('X9324666','TEJASHREE','B','PANDIT','9082 ESTAES OF RICHARDSON,
+RICHARDSON, TX',9004360125,28,'F');
+--
+-- Table structure for table `passenger3`
+--
+DROP TABLE IF EXISTS `passenger3`;
+CREATE TABLE `passenger3` (
+`PID` int NOT NULL,
+`FLIGHT_CODE` varchar(10) DEFAULT NULL,
+PRIMARY KEY (`PID`),
+KEY `FLIGHT_CODE` (`FLIGHT_CODE`),
+CONSTRAINT `passenger3_ibfk_1` FOREIGN KEY (`FLIGHT_CODE`) REFERENCES `flight`
+(`FLIGHT_CODE`) ON DELETE CASCADE
+) ENGINE=InnoDB;
+--
+-- Dumping data for table `passenger3`
+--
+INSERT INTO `passenger3` VALUES
+(3,'9W2334'),(7,'9W2334'),(8,'AA4367'),(1,'AI2014'),(13,'AI2014'),(11,'BA1689'),(14,'BA1689'),(6,'BA3056
+'),(10,'EK3456'),(5,'EY1234'),(2,'LH9876'),(4,'QR1902'),(9,'QR1902'),(12,'QR1902'),(15,'QR2305');
+--
+-- Table structure for table `serves`
+--
+DROP TABLE IF EXISTS `serves`;
+CREATE TABLE `serves` (
+`SSN` int NOT NULL,
+`PID` int NOT NULL,
+`PASSPORTNO` varchar(10) NOT NULL,
+PRIMARY KEY (`SSN`,`PID`,`PASSPORTNO`),
+KEY `PID` (`PID`,`PASSPORTNO`),
+CONSTRAINT `serves_ibfk_1` FOREIGN KEY (`SSN`) REFERENCES `employee1` (`SSN`) ON DELETE
+CASCADE,
+CONSTRAINT `serves_ibfk_2` FOREIGN KEY (`PID`, `PASSPORTNO`) REFERENCES `passenger1` (`PID`,
+`PASSPORTNO`) ON DELETE CASCADE
+) ENGINE=InnoDB;
+--
+-- Dumping data for table `serves`
+--
+INSERT INTO `serves` VALUES
+(123456789,1,'A1234568'),(888665555,4,'D1002004'),(123456789,7,'J9801235'),(888665555,7,'J980123
+5'),(123456789,9,'Q1243567'),(333445555,10,'S1243269'),(333445555,12,'K3212322'),(888665555,12,'K
+3212322'),(888665555,13,'P3452390'),(123456789,15,'R8990566');
+--
+-- Table structure for table `ticket1`
+--
+DROP TABLE IF EXISTS `ticket1`;
+CREATE TABLE `ticket1` (
+`TICKET_NUMBER` bigint NOT NULL,
+`SOURCE` varchar(3) DEFAULT NULL,
+`DESTINATION` varchar(3) DEFAULT NULL,
+`DATE_OF_BOOKING` date DEFAULT NULL,
+`DATE_OF_TRAVEL` date DEFAULT NULL,
+`SEATNO` varchar(5) DEFAULT NULL,
+`CLASS` varchar(15) DEFAULT NULL,
+`DATE_OF_CANCELLATION` date DEFAULT '0000-00-00',
+`PID` int DEFAULT NULL,
+`PASSPORTNO` varchar(10) DEFAULT NULL,
+KEY `PID` (`PID`,`PASSPORTNO`),
+CONSTRAINT `ticket1_ibfk_1` FOREIGN KEY (`PID`, `PASSPORTNO`) REFERENCES `passenger1` (`PID`,
+`PASSPORTNO`) ON DELETE CASCADE
+) ENGINE=InnoDB;
+--
+-- Dumping data for table `ticket1`
+--
+INSERT INTO `ticket1` VALUES (11234111122,'BOM','DFW','2016-05-11','2016-12-
+15','32A','ECONOMY',NULL,1,'A1234568'),(984567222299,'JFK','BOM','2016-06-11','2016-12-
+20','45D','ECONOMY','2016-12-10',2,'B9876541'),(1768901333273,'IAH','DEL','2016-08-21','2016-12-
+25','1A','BUSINESS',NULL,3,'C2345698'),(5890987441464,'IXC','IAH','2016-08-10','2017-01-
+12','20C','FIRST-CLASS',NULL,4,'D1002004'),(1577654664266,'JFK','TPA','2016-06-13','2016-12-
+10','54E','ECONOMY',NULL,5,'X9324666'),(2206543545545,'BOM','DFW','2016-11-11','2017-02-
+12','43B','ECONOMY',NULL,6,'B8765430'),(7064321779737,'IAH','DEL','2016-11-15','2016-12-
+25','27B','FIRST-CLASS',NULL,7,'J9801235'),(1571357215116,'SFO','FRA','2016-08-15','2016-12-
+18','34E','ECONOMY',NULL,8,'A1122334'),(1570864987655,'IXC','IAH','2016-11-12','2016-12-
+30','54C','ECONOMY',NULL,9,'Q1243567'),(1579283997799,'BOM','SFO','2016-01-22','2016-12-
+15','38A','ECONOMY',NULL,10,'S1243269'),(1255701876107,'FRA','DEL','2017-10-19','2016-12-
+31','57F','ECONOMY',NULL,11,'E3277889'),(1251334499699,'IXC','IAH','2016-11-20','2017-01-
+12','45D','ECONOMY',NULL,12,'K3212322'),(1258776199490,'BOM','DFW','2016-05-13','2016-12-
+15','37C','ECONOMY','2016-05-25',13,'P3452390'),(5891155114477,'FRA','DEL','2016-07-27','2016-12-
+23','55C','ECONOMY',NULL,14,'W7543336'),(5893069766787,'BOM','DFW','2015-03-16','2015-09-
+22','33F','ECONOMY',NULL,15,'R8990566');
+--
+-- Table structure for table `ticket2`
+--
+DROP TABLE IF EXISTS `ticket2`;
+CREATE TABLE `ticket2` (
+`DATE_OF_BOOKING` date NOT NULL,
+`SOURCE` varchar(3) NOT NULL,
+`DESTINATION` varchar(3) NOT NULL,
+`CLASS` varchar(15) NOT NULL,
+`PRICE` int DEFAULT NULL,
+PRIMARY KEY (`DATE_OF_BOOKING`,`SOURCE`,`DESTINATION`,`CLASS`)
+) ENGINE=InnoDB;
+--
+-- Dumping data for table `ticket2`
+--
+INSERT INTO `ticket2` VALUES ('2016-01-22','BOM','SFO','ECONOMY',45000),('2016-05-
+11','BOM','DFW','ECONOMY',95000),('2016-05-13','BOM','DFW','ECONOMY',65000),('2016-05-
+21','IAH','DEL','BUSINESS',200000),('2016-06-11','JFK','BOM','ECONOMY',100000),('2016-06-
+16','JFK','TPA','ECONOMY',98000),('2016-06-26','FRA','DEL','ECONOMY',80000),('2016-08-
+10','IXC','IAH','FIRST-CLASS',150000),('2016-08-11','BOM','DFW','ECONOMY',98000),('2016-10-
+15','SFO','FRA','ECONOMY',170000),('2016-10-19','FRA','DEL','ECONOMY',100000),('2016-11-
+11','BOM','DFW','ECONOMY',125000),('2016-11-12','IXC','IAH','ECONOMY',140000),('2016-11-
+15','IAH','DEL','FIRST-CLASS',195000),('2016-11-20','IXC','IAH','ECONOMY',120000);
+--
+-- Table structure for table `ticket3`
+--
+DROP TABLE IF EXISTS `ticket3`;
+CREATE TABLE `ticket3` (
+`DATE_OF_CANCELLATION` date NOT NULL,
+`SURCHARGE` int DEFAULT NULL,
+PRIMARY KEY (`DATE_OF_CANCELLATION`)
+) ENGINE=InnoDB;
+--
+-- Dumping data for table `ticket3`
+--
+INSERT INTO `ticket3` VALUES ('2016-05-25',25000),('2016-12-10',75000);
+--
+-- Dumping events for database 'airport'
+--
+--
+-- Dumping routines for database 'airport'
